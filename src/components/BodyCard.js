@@ -1,21 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import CardFilm from './CardFilm'
 
-import { Card } from 'react-bootstrap'
 import { createUseStyles } from 'react-jss'
 import prime from '../img/prime.png'
 import primevideocard from '../img/primevideocard.png';
-import { Link } from 'react-router-dom';
+
 import firebase from '../firebase'
 const useStyle = createUseStyles({
-    imgCard: {
-        width: '340px',
-        height: '405px'
-    },
-    card: {
 
-        width: '340px',
-        height: '405px'
-    },
     wrapCard: {
         padding: '100px',
         paddingTop: '50px'
@@ -42,8 +34,7 @@ const BodyCard = () => {
     const [loading, setLoading] = useState(false)
     const ref = firebase.firestore().collection("film");
     useEffect(() => {
-
-        getFilm()
+ getFilm()
     }, [])
     const getFilm = () => {
         setLoading(true);
@@ -56,20 +47,7 @@ const BodyCard = () => {
             })
     }
 
-    const cardFilm = () => {
-        if (filmListData) {
-            return
-            filmListData.map((item) => {
-                < Card className={classes.card} >
-                    <Link to={`/about/`}>
-                        <Card.Img className={classes.imgCard} src={item.img} alt="Card image" />
-                    </Link>
-                </Card>
 
-            })
-        }
-
-    }
 
     return (
         <>
@@ -80,7 +58,10 @@ const BodyCard = () => {
                     <h1 className={classes.titleCard}>Film consigliati per te</h1>
                 </div>
                 <div >
-                    {cardFilm}
+                    {filmListData ?
+                        <CardFilm filmListData={filmListData} /> :
+                        <h1>Loading...</h1>
+                    }
                 </div>
             </div>
         </>

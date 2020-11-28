@@ -23,11 +23,7 @@ function App() {
           <CarouselApp />
           <Switch>
             <Route path='/home' component={BodyCard} />
-            <Route
-              exact path='/about/:film'
-              component={FilmDetail}
-
-            />
+       
           </Switch>
         </div>
       </>
