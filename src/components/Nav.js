@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import { createUseStyles } from 'react-jss';
 import logo from '../img/amazon_logo.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useForm, Controller } from 'react-hook-form';
 import { Form, Button } from 'react-bootstrap';
-import firebase from '../firebase'
+import firebase from '../firebase';
 
 const useStyle = createUseStyles({
 
@@ -77,7 +77,9 @@ const Navigator = () => {
     }, [])
     const getFilm = () => {
         setLoading(true);
-        ref.get()
+        ref.where("titolo","==","Avengers - infinity war")
+        .get()
+        
             .then((filmItem) => {
                 const items = filmItem.docs.map((doc) => doc.data())
 

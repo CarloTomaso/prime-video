@@ -5,24 +5,15 @@ import primevideocard from '../img/primevideocard.png';
 const useStyle = createUseStyles({
 
 })
-
-
-const FilmDetail = () => {
-
+const FilmDetail = ({ filmListData }) => {
+    console.log(filmListData)
     const classes = useStyle()
     return (
         <>
-
-            <div className={classes.navDetail}>
-                <Card.Img className={classes.imgCard} src='' alt="Card image" />
-                <h1 className={classes.titleDetail}></h1>
-            </div>
-            <div className={classes.navDetail}>
-                <Card.Img className={classes.imgCard} src={primevideocard} alt="Card image" />
-                <h1 className={classes.titleDetail}>Loading...</h1>
-            </div>
-
-
+            {filmListData ?
+                <Card.Img className={classes.imgCard} src={filmListData.img} alt="Card image" /> :
+                <h1>Loading...</h1>
+            }
         </>
     )
 }
