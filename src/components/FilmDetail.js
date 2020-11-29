@@ -11,7 +11,8 @@ const FilmDetail = ({ filmListData }) => {
     return (
         <>
             {filmListData ?
-                <Card.Img className={classes.imgCard} src={filmListData.img} alt="Card image" /> :
+                <Card.Img className={classes.imgCard} src={filmListData.img} alt="Card image" />
+                :
                 <h1>Loading...</h1>
             }
         </>

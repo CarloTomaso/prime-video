@@ -43,8 +43,19 @@ function App() {
         <CarouselApp />
         <BodyCard filmListData={filmListData} />
         <Switch>
-          <Route path='/home' component={CardFilm} />
-          <Route exact path='/about' component={FilmDetail} filmListData={filmListData} />
+          <Route
+            path='/home'
+            render={(props) => (
+              <CardFilm{...props} filmListData={filmListData} />
+            )}
+          />
+          <Route
+            exact path='/about'
+            render={(props) => (
+              <FilmDetail{...props} filmListData={filmListData} />
+            )}
+          />
+
         </Switch>
       </>
     </Router>

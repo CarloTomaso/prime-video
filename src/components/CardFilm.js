@@ -44,7 +44,7 @@ const CardFilm = ({ filmListData }) => {
                     </div>
                     <div className={classes.cardWrapMap} >
                         {filmListData.map((item) => < Card className={classes.card} >
-                            <Link to={`/about`}>
+                            <Link to={'/about'}>
                                 <Card.Img className={classes.imgCard} src={item.img} alt="Card image" />
                             </Link>
                         </Card>
