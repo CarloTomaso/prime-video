@@ -8,7 +8,9 @@ import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
     postersFilm: {
-        width: "100%"
+        width: "100%",
+        marginTop: '60px',
+
     }
 })
 const CarouselApp = () => {

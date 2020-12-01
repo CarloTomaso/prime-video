@@ -3,6 +3,7 @@ import { Card } from 'react-bootstrap';
 import { createUseStyles } from 'react-jss';
 import { Link } from 'react-router-dom';
 import prime from '../img/prime.png'
+import { useParams } from 'react-router-dom';
 const useStyle = createUseStyles({
     imgCard: {
         width: '100%',
@@ -32,7 +33,13 @@ const useStyle = createUseStyles({
     }
 })
 
+
+
 const CardFilm = ({ filmListData }) => {
+
+
+    let { id } = useParams();
+
     const classes = useStyle();
     return (
         <>
@@ -43,16 +50,19 @@ const CardFilm = ({ filmListData }) => {
                         <h1 className={classes.titleCard}>Film consigliati per te</h1>
                     </div>
                     <div className={classes.cardWrapMap} >
-                        {filmListData.map((item) => < Card className={classes.card} >
-                            <Link to={'/about'}>
-                                <Card.Img className={classes.imgCard} src={item.img} alt="Card image" />
-                            </Link>
-                        </Card>
+                        {filmListData.map((item, id) =>
+                            < Card className={classes.card} >
+                                <Link to={`/about/${id}`} >
+                                    <Card.Img key={id} className={classes.imgCard} src={item.img} alt="Card image" />
+                                </Link>
+                            </Card>
                         )}
+
                     </div>
                 </div> :
                 <h1>Loading...</h1>
             }
+
         </>
     )
 

@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import { createUseStyles } from 'react-jss';
 import logo from '../img/amazon_logo.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useForm, Controller } from 'react-hook-form';
-import { Form, Button } from 'react-bootstrap';
 import firebase from '../firebase';
 
 const useStyle = createUseStyles({
@@ -13,16 +10,12 @@ const useStyle = createUseStyles({
     nav: {
         display: "flex",
         alignItems: "baseline",
-        height: "80px",
-        backgroundColor: "#0f171e",
-        width: "100%"
-
-    },
-
-    logoNav: {
-        width: "110px",
-        height: "40px",
-        padding: "20px",
+        height: "60px",
+        width: "100%",
+        position: 'fixed',
+        zIndex: '9999999',
+        padding: "10px",
+        backgroundColor: "#1b2530"
 
     },
 
@@ -34,16 +27,7 @@ const useStyle = createUseStyles({
         fontFamily: "Arial, Helvetica, sans-serif"
     },
 
-    search: {
 
-        display: "flex",
-        textDecoration: "none",
-        color: "white",
-        marginLeft: "700px",
-        fontFamily: "Arial, Helvetica, sans-serif",
-        width: "200px",
-
-    },
     buttonNav: {
         backgroundColor: "#0f171e",
         border: "0"
@@ -77,9 +61,9 @@ const Navigator = () => {
     }, [])
     const getFilm = () => {
         setLoading(true);
-        ref.where("titolo","==","Avengers - infinity war")
-        .get()
-        
+        ref.where("titolo", "==", "Avengers - infinity war")
+            .get()
+
             .then((filmItem) => {
                 const items = filmItem.docs.map((doc) => doc.data())
 
@@ -105,15 +89,7 @@ const Navigator = () => {
                 />
                 </Navbar.Brand>
                 <Nav.Link className={classes.linkItem} href="/home">Home</Nav.Link>
-                <Nav.Link className={classes.linkItem} eventKey="link-1">Categoria</Nav.Link>
-                <Form className={classes.search} onSubmit={handleSubmit(handleData)}>
-                    <Button className={classes.buttonNav} type="submit"><FontAwesomeIcon className={classes.faSearch} icon={faSearch} /></Button>
-                    <Form.Group className={classes.formControl} controlId="formBasicEmail">
-                        <Controller className={classes.controller} type="text" name="cerca" placeholder="Cerca Film" control={control} as={Form.Control} defaultValue=""
-                        />
-                    </Form.Group>
-                </Form>
-
+                <Nav.Link className={classes.linkItem} eventKey="link-1">Carica il tuo film</Nav.Link>
             </Navbar>
         </>
     );
